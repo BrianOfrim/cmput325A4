@@ -12,7 +12,7 @@ fourSquares(N, [S1, S2, S3, S4]) :- Vars = [S1, S2, S3, S4],
 
 xappend(L,L2) :- append(L, [1,2],L2).
 
-selectOne([],[],L). 
+disarm([],[],L). 
 disarm(A,B,L) :-
     Vars = [B1, A_1 ,A1 ,B_1 ,A2 ,B_2],
     member(B1,B),
@@ -29,7 +29,7 @@ disarm(A,B,L) :-
     select(A1,A,D),
     select(A2,D,E),
     append([[[A1,A2],[B1]]], L2, L),
-    selectOne(E,C,L2).
+    disarm(E,C,L2).
 
 
 disarm(A,B,L) :-
@@ -43,7 +43,7 @@ disarm(A,B,L) :-
     select(B1,B,D),
     select(B2,D,E),
     append([[[A1],[B1,B2]]], L2, L),
-    selectOne(C,E,L2).
+    disarm(C,E,L2).
 
 disarm(A,B,L) :-
     Vars = [B1,A1,A2],
@@ -56,7 +56,7 @@ disarm(A,B,L) :-
     select(A1,A,D),
     select(A2,D,E),
     append([[[A1,A2],[B1]]], L2, L),
-    selectOne(E,C,L2).
+    disarm(E,C,L2).
 
     
 
